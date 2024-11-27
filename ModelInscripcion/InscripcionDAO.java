@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 
 /**
@@ -17,12 +18,13 @@ import java.sql.PreparedStatement;
  */
 import java.sql.Date;
 import java.util.ArrayList;
-public class InscripcionDAO extends DAO {
+public class InscripcionDAO extends DAO<InscripcionDTO> {
 
     public InscripcionDAO(Connection connection){
         super(connection);
     }
     
+    @Override
     public boolean create(InscripcionDTO dto) throws SQLException {
         if(dto == null || !validatePK(dto.getId())){
             return false;
@@ -39,13 +41,24 @@ public class InscripcionDAO extends DAO {
     
 
     @Override
-    public Object read(Object id) throws SQLException {
+    public InscripcionDTO read(Object id) throws SQLException {
            if(id == null || String.valueOf(id).trim().isEmpty()){
-            return false;
+            return null;
         }
         String query = "Call ReadInscripcionforID(?)";
         try( PreparedStatement stmt = connection.prepareStatement(query)){
             stmt.setInt(1, (int) id);
+          try( ResultSet rs = stmt.executeQuery()){
+              if(rs.next()){
+                  return new InscripcionDTO(
+                  rs.getInt(1),
+                  rs.get(2) ,
+                  rs.getObject(3),
+                  rs.getDate(4),
+                  rs.getBoolean(5)
+                  )
+              }
+          }
             
         }
     return null;
@@ -57,7 +70,7 @@ public class InscripcionDAO extends DAO {
         List<InscripcionDTO> list = new ArrayList<>();
         
         try( PreparedStatement stmt = connection.prepareStatement(query)){
-          while()
+          while(rs)
         }
     }
 

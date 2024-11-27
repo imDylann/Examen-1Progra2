@@ -15,12 +15,12 @@ import java.util.Date;
  */
 public class InscripcionDTO {
       private final int id;
-   private final Taller taller;
-   private final Participante participante;
+   private final int taller;
+   private final String participante;
    private final Date fecha;
    private final boolean asistencia;
 
-    public InscripcionDTO(int id, Taller taller, Participante participante, Date fecha, boolean asistencia) {
+    public InscripcionDTO(int id, int taller, String participante, Date fecha, boolean asistencia) {
         this.id = id;
         this.taller = taller;
         this.participante = participante;
@@ -32,11 +32,11 @@ public class InscripcionDTO {
         return id;
     }
 
-    public Taller getTaller() {
+    public int getTaller() {
         return taller;
     }
 
-    public Participante getParticipante() {
+    public String getParticipante() {
         return participante;
     }
 
