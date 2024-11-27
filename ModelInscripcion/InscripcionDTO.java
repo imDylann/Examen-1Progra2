@@ -7,6 +7,7 @@ package ModelInscripcion;
 import ModelParticipante.Participante;
 import ModelTaller.Taller;
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
@@ -16,10 +17,10 @@ public class InscripcionDTO {
       private final int id;
    private final Taller taller;
    private final Participante participante;
-   private final LocalDate fecha;
+   private final Date fecha;
    private final boolean asistencia;
 
-    public InscripcionDTO(int id, Taller taller, Participante participante, LocalDate fecha, boolean asistencia) {
+    public InscripcionDTO(int id, Taller taller, Participante participante, Date fecha, boolean asistencia) {
         this.id = id;
         this.taller = taller;
         this.participante = participante;
@@ -39,7 +40,7 @@ public class InscripcionDTO {
         return participante;
     }
 
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
