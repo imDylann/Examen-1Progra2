@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model.DTO;
 
-import Model.Participante;
+import Model.Participant.Participante;
 import Model.Taller;
 import java.time.LocalDate;
 

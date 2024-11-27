@@ -9,6 +9,6 @@ import java.sql.SQLException;
  * @author tilin
  */
 public interface Mapper <Ent, DTO> {
-    public DTO toDto (Ent, ent);
-    public Ent toEnt (DTO, dto) throw SQLException;
+    public DTO toDto (Ent ent);
+    public Ent toEnt (DTO dto) throws SQLException;
 }

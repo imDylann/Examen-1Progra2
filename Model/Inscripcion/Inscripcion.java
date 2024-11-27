@@ -4,6 +4,7 @@
  */
 package Model;
 
+import Model.Participant.Participante;
 import java.time.LocalDate;
 
 /**
