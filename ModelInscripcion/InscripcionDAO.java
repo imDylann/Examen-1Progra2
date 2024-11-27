@@ -31,8 +31,8 @@ public class InscripcionDAO extends DAO<InscripcionDTO> {
         }
         String query = "Call CreateInscripcion(?,?,?,?)";
         try( PreparedStatement stmt = connection.prepareStatement(query)){
-            stmt.setInt(1, dto.getTaller().getId());
-            stmt.setString(2, dto.getParticipante().getCedula() );
+            stmt.setInt(1, dto.getTaller());
+            stmt.setString(2, dto.getParticipante());
             stmt.setDate(3, (Date) dto.getFecha());
             stmt.setBoolean(4, dto.isAsistencia());
             return stmt.executeUpdate()>0;
@@ -52,11 +52,11 @@ public class InscripcionDAO extends DAO<InscripcionDTO> {
               if(rs.next()){
                   return new InscripcionDTO(
                   rs.getInt(1),
-                  rs.get(2) ,
-                  rs.getObject(3),
+                  rs.getInt(2) ,
+                  rs.getString(3),
                   rs.getDate(4),
                   rs.getBoolean(5)
-                  )
+                  );
               }
           }
             
@@ -68,15 +68,30 @@ public class InscripcionDAO extends DAO<InscripcionDTO> {
     public List readAll() throws SQLException {
         String query = "Call ReadInscripcionAll()";
         List<InscripcionDTO> list = new ArrayList<>();
-        
         try( PreparedStatement stmt = connection.prepareStatement(query)){
-          while(rs)
+         try(ResultSet rs = stmt.executeQuery()){
+             list.add(new InscripcionDTO(
+             rs.getInt(1),
+             rs.getInt(2),
+             rs.getString(3),
+             rs.getDate(4),
+             rs.getBoolean(5)        
+              ));
+         }
         }
+        return list;
     }
 
     @Override
     public boolean delete(Object id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(id == null || (int)id == 0){
+            return false;
+        }
+        String query = "Call DeleteInscripcion";
+        try(PreparedStatement stmt = connection.prepareStatement(query)){
+            stmt.setInt(1, (int) id);
+            return stmt.executeUpdate()>0;
+        }
     }
 
     public boolean validatePK(Object id)throws SQLException {
