@@ -3,11 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package Model.Mapper;
-
+import java.sql.SQLException;
 /**
  *
- * @author Student
+ * @author tilin
  */
-public interface Mapper {
-    
+public interface Mapper <Ent, DTO> {
+    public DTO toDto (Ent, ent);
+    public Ent toEnt (DTO, dto) throw SQLException;
 }
