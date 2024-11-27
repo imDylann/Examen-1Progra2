@@ -57,11 +57,7 @@ public class InscripcionDAO extends DAO {
         List<InscripcionDTO> list = new ArrayList<>();
         
         try( PreparedStatement stmt = connection.prepareStatement(query)){
-            stmt.setInt(1, dto.getTaller().getId());
-            stmt.setString(2, dto.getParticipante().getCedula() );
-            stmt.setDate(3, (Date) dto.getFecha());
-            stmt.setBoolean(4, dto.isAsistencia());
-            return stmt.executeUpdate()>0;
+          while()
         }
     }
 
