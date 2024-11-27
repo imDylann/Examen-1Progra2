@@ -1,20 +1,21 @@
+package ModelParticipante;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model.Participant;
 
 /**
  *
  * @author Student
  */
-public class ParticipanteDTO {
-   private final String cedula;
-    private final String nombre; 
-    private final int telefono; 
-    private final String correo; 
+public class Participante {
+    private String cedula;
+    private String nombre; 
+    private int telefono; 
+    private String correo; 
 
-    public ParticipanteDTO(String cedula, String nombre, int telefono, String correo) {
+    public Participante(String cedula, String nombre, int telefono, String correo) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -37,4 +38,18 @@ public class ParticipanteDTO {
         return correo;
     }
 
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    @Override
+    public String toString() {
+        return "Participante{" + "cedula=" + cedula + ", nombre=" + nombre + ", telefono=" + telefono + ", correo=" + correo + '}';
+    }
+    
+    
 }
